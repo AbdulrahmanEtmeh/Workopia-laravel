@@ -4,7 +4,7 @@
         <h2 class="text-4xl text-center font-bold mb-4">
             Create Job Listing
         </h2>
-        <form method="POST" action="/jobs" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('jobs.store') }}" enctype="multipart/form-data">
             @csrf
             <h2 class="text-2xl font-bold mb-6 text-center text-gray-500">
                 Job Info
