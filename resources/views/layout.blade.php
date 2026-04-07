@@ -10,6 +10,7 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="//unpkg.com/alpinejs" defer></script>
     <title>{{ $title ?? 'Workopia | Find and List Jobs' }}</title>
 </head>
 
@@ -20,6 +21,13 @@
         <x-top-banner />
     @endif
     <main class="container mx-auto p-4 mt-4">
+        {{-- Display Alert Messages --}}
+        @if (session('success'))
+            <x-alert type="success" :message="session('success')" />
+        @endif
+        @if (session('error'))
+            <x-alert type="error" :message="session('error')" />
+        @endif
         {{ $slot }}
     </main>
 
