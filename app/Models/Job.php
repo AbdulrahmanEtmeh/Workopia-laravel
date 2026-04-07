@@ -39,4 +39,18 @@ class Job extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getJobTypeLabelAttribute(): string
+    {
+        return match ($this->job_type) {
+            'full_time' => 'Full-Time',
+            'part_time' => 'Part-Time',
+            'contract' => 'Contract',
+            'temporary' => 'Temporary',
+            'internship' => 'Internship',
+            'volunteer' => 'Volunteer',
+            'on_call' => 'On-Call',
+            default => $this->job_type,
+        };
+    }
 }

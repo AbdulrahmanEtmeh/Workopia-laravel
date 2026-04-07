@@ -27,7 +27,7 @@
                     </p>
                     <ul class="my-4 bg-gray-100 p-4">
                         <li class="mb-2">
-                            <strong>Job Type:</strong> {{ $job->job_type }}
+                            <strong>Job Type:</strong> {{ $job->job_type_label }}
                         </li>
                         <li class="mb-2">
                             <strong>Remote:</strong> {{ $job->is_remote ? 'Yes' : 'No' }}

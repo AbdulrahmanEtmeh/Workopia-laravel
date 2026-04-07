@@ -7,7 +7,7 @@
             <h2 class="text-xl font-semibold">
                 {{ $job->title }}
             </h2>
-            <p class="text-sm text-gray-500">{{ $job->job_type }}</p>
+            <p class="text-sm text-gray-500">{{ $job->job_type_label }}</p>
         </div>
     </div>
     <p class="text-gray-700 text-lg mt-2">

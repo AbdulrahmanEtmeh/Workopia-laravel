@@ -28,13 +28,13 @@
 
 
             <x-inputs.select id="job_type" name="job_type" label="Job Type" :value="old('job_type')" :options="[
-                'Full-Time' => 'Full-Time',
-                'Part-Time' => 'Part-Time',
-                'Contract' => 'Contract',
-                'Temporary' => 'Temporary',
-                'Internship' => 'Internship',
-                'Volunteer' => 'Volunteer',
-                'On-Call' => 'On-Call',
+                'full_time' => 'Full-Time',
+                'part_time' => 'Part-Time',
+                'contract' => 'Contract',
+                'temporary' => 'Temporary',
+                'internship' => 'Internship',
+                'volunteer' => 'Volunteer',
+                'on_call' => 'On-Call',
             ]" />
 
             <x-inputs.select id="remote" name="remote" label="Remote" :value="old('remote')" :options="[
@@ -59,7 +59,7 @@
             <x-inputs.text-area id="company_description" name="company_description" label="Company Description"
                 placeholder="We are a leading tech company specializing in innovative solutions..." />
 
-            <x-inputs.text id="company_website" name="company_website" label="Company Website"
+            <x-inputs.text id="company_website" name="company_website" label="Company Website" type="url"
                 placeholder="Enter website" />
 
             <x-inputs.text id="contact_phone" name="contact_phone" label="Contact Phone" placeholder="Enter phone" />
