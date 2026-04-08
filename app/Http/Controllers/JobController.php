@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use App\Models\Job;
 use Illuminate\Validation\Rule;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use App\Models\Job;
 
 class JobController extends Controller
 {
+    use AuthorizesRequests;
+
     private const JOB_TYPES = [
         'full_time',
         'part_time',
@@ -62,7 +65,7 @@ class JobController extends Controller
         ]);
 
         // Hardcoded User ID
-        $validatedData['user_id'] = 1;
+        $validatedData['user_id'] = auth()->user->id;
 
         // Handle file upload for company logo
         if ($request->hasFile('company_logo')) {
@@ -90,6 +93,10 @@ class JobController extends Controller
     // @route GET /jobs/{ID}/edit
     public function edit(Job $job): View
     {
+        // Check if the user is authorized to update the job
+        $this->authorize('update', $job);
+
+
         return view('jobs.edit')->with('job', $job);
     }
 
@@ -97,6 +104,9 @@ class JobController extends Controller
     // @route PUT /jobs/{ID}
     public function update(Request $request, Job $job): string
     {
+        // Check if the user is authorized to update the job
+        $this->authorize('update', $job);
+
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
@@ -142,6 +152,10 @@ class JobController extends Controller
     // @route DELETE /jobs/{ID}
     public function destroy(Job $job): RedirectResponse
     {
+        // Check if the user is authorized to update the job
+        $this->authorize('delete', $job);
+
+
         // Delete logo file if exists
         if ($job->company_logo) {
             Storage::delete('public/logos/' . basename($job->company_logo));
