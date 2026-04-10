@@ -20,10 +20,12 @@ class DatabaseSeeder extends Seeder
         // Truncate tables to avoid duplicate entries
         DB::table('job_listings')->truncate();
         DB::table('users')->truncate();
+        DB::table('job_user_bookmarks')->truncate();
 
         // Call individual seeders
         $this->call(TestUserSeeder::class);
         $this->call(RandomUserSeeder::class);
         $this->call(JobSeeder::class);
+        $this->call(BookmarkSeeder::class);
     }
 }
