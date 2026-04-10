@@ -56,7 +56,7 @@ class User extends Authenticatable
         return $this->hasMany(Job::class);
     }
 
-    // Relation to bookmarks
+    // Relate to bookmarks
     public function bookmarkedJobs(): BelongsToMany
     {
         return $this->belongsToMany(Job::class, 'job_user_bookmarks')->withTimestamps();
