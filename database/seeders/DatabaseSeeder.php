@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Truncate tables to avoid duplicate entries
-        DB::table('job_listings')->truncate();
-        DB::table('users')->truncate();
         DB::table('job_user_bookmarks')->truncate();
         DB::table('applicants')->truncate();
+        DB::table('job_listings')->truncate();
+        DB::table('users')->truncate();
 
         // Call individual seeders
         $this->call(TestUserSeeder::class);
